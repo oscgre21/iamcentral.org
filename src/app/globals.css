@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colores Primarios */
+  --color-verde-lima: #7CB342;
+  --color-verde-claro: #8BC34A;
+  --color-azul-marino: #1A237E;
+
+  /* Colores de Acento */
+  --color-naranja: #E65100;
+  --color-naranja-dorado: #F57C00;
+
+  /* Colores Neutros */
+  --color-blanco: #FFFFFF;
+  --color-gris-oscuro: #424242;
+  --color-gris-medio: #757575;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
