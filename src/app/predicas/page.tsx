@@ -277,7 +277,7 @@ export default function PredicasPage() {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   // Obtener categorías únicas
-  const categories = [...new Set(predicasData.map(p => p.category))];
+  const categories = Array.from(new Set(predicasData.map(p => p.category)));
 
   // Filtrar prédicas
   const filteredPredicas = predicasData.filter(predica => {
