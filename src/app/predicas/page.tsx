@@ -19,10 +19,15 @@ import {
   Youtube,
   MapPin,
   Phone,
-  Mail
+  Mail,
+  Mic,
+  GraduationCap
 } from 'lucide-react';
 
-// Datos de ejemplo de prédicas
+// Tipos de contenido
+type ContentType = 'predica' | 'estudio';
+
+// Datos de ejemplo de prédicas y estudios bíblicos
 const predicasData = [
   {
     id: 1,
@@ -31,6 +36,7 @@ const predicasData = [
     date: "2024-12-15",
     duration: "45 min",
     category: "Fe",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Descubre cómo mantener tu fe firme cuando enfrentas las tormentas de la vida."
   },
@@ -41,6 +47,7 @@ const predicasData = [
     date: "2024-12-08",
     duration: "52 min",
     category: "Familia",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Principios bíblicos para construir hogares fuertes y llenos del amor de Dios."
   },
@@ -51,18 +58,20 @@ const predicasData = [
     date: "2024-12-01",
     duration: "38 min",
     category: "Adoración",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Aprende a entrar en la presencia de Dios a través de una adoración genuina."
   },
   {
     id: 4,
-    title: "El llamado a servir",
+    title: "Introducción al Libro de Romanos",
     pastor: "Pastor Gregorio Cruz",
     date: "2024-11-24",
-    duration: "41 min",
-    category: "Servicio",
+    duration: "1h 15 min",
+    category: "Nuevo Testamento",
+    type: "estudio" as ContentType,
     image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Cada creyente tiene un llamado especial. Descubre el tuyo y sirve con pasión."
+    description: "Un recorrido profundo por la carta de Pablo a los Romanos y su mensaje de salvación."
   },
   {
     id: 5,
@@ -71,18 +80,20 @@ const predicasData = [
     date: "2024-11-17",
     duration: "47 min",
     category: "Oración",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Claves para desarrollar una vida de oración efectiva y poderosa."
   },
   {
     id: 6,
-    title: "Viviendo en el Espíritu",
+    title: "Los Frutos del Espíritu Santo",
     pastor: "Pastor Gregorio Cruz",
     date: "2024-11-10",
-    duration: "55 min",
+    duration: "1h 30 min",
     category: "Espíritu Santo",
+    type: "estudio" as ContentType,
     image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "El Espíritu Santo quiere guiarte cada día. Aprende a caminar en su poder."
+    description: "Estudio detallado de Gálatas 5:22-23 sobre los frutos que produce el Espíritu en nosotros."
   },
   {
     id: 7,
@@ -91,18 +102,20 @@ const predicasData = [
     date: "2024-11-03",
     duration: "43 min",
     category: "Gracia",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "La gracia de Dios es suficiente para cada situación que enfrentamos."
   },
   {
     id: 8,
-    title: "Edificando sobre la roca",
+    title: "Estudio del Libro de Génesis - Parte 1",
     pastor: "Pastor Gregorio Cruz",
     date: "2024-10-27",
-    duration: "49 min",
-    category: "Fundamentos",
+    duration: "1h 20 min",
+    category: "Antiguo Testamento",
+    type: "estudio" as ContentType,
     image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Los fundamentos bíblicos que todo creyente necesita para una vida victoriosa."
+    description: "Análisis profundo de los primeros capítulos de Génesis: la creación y el plan de Dios."
   },
   {
     id: 9,
@@ -111,18 +124,20 @@ const predicasData = [
     date: "2024-10-20",
     duration: "36 min",
     category: "Gozo",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Descubre cómo el gozo de Dios puede ser tu fuerza en medio de cualquier circunstancia."
   },
   {
     id: 10,
-    title: "Discipulado: Creciendo juntos",
-    pastor: "Pastor Gregorio Cruz",
+    title: "Las Parábolas de Jesús",
+    pastor: "Pastora Lucia Gálvez",
     date: "2024-10-13",
-    duration: "50 min",
-    category: "Discipulado",
+    duration: "1h 10 min",
+    category: "Evangelios",
+    type: "estudio" as ContentType,
     image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "La importancia de crecer en comunidad y discipular a otros en la fe."
+    description: "Un estudio profundo de las parábolas de Jesús y su significado para nuestra vida hoy."
   },
   {
     id: 11,
@@ -131,18 +146,20 @@ const predicasData = [
     date: "2024-10-06",
     duration: "58 min",
     category: "Sanidad",
+    type: "predica" as ContentType,
     image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Dios quiere sanar las heridas de tu corazón. Permite que su amor te restaure."
   },
   {
     id: 12,
-    title: "Mayordomía fiel",
+    title: "El Tabernáculo y sus Significados",
     pastor: "Pastor Gregorio Cruz",
     date: "2024-09-29",
-    duration: "44 min",
-    category: "Mayordomía",
+    duration: "1h 25 min",
+    category: "Antiguo Testamento",
+    type: "estudio" as ContentType,
     image: "https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Administrando con sabiduría todo lo que Dios nos ha confiado."
+    description: "Estudio tipológico del tabernáculo y cómo cada elemento apunta a Cristo."
   },
 ];
 
@@ -168,9 +185,15 @@ const PredicaCard = ({ predica }: { predica: typeof predicasData[0] }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-        {/* Categoría */}
-        <div className="absolute top-4 left-4">
-          <span className="bg-iglesia-naranja text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+        {/* Tipo y Categoría */}
+        <div className="absolute top-4 left-4 flex flex-col gap-2">
+          <span className={`text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 ${
+            predica.type === 'estudio' ? 'bg-iglesia-verde-lima' : 'bg-iglesia-naranja'
+          }`}>
+            {predica.type === 'estudio' ? <GraduationCap size={12} /> : <Mic size={12} />}
+            {predica.type === 'estudio' ? 'Estudio' : 'Prédica'}
+          </span>
+          <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded">
             {predica.category}
           </span>
         </div>
@@ -275,16 +298,23 @@ export default function PredicasPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedType, setSelectedType] = useState<ContentType | 'todos'>('todos');
 
-  // Obtener categorías únicas
-  const categories = Array.from(new Set(predicasData.map(p => p.category)));
+  // Filtrar por tipo primero para obtener categorías relevantes
+  const predicasByType = selectedType === 'todos'
+    ? predicasData
+    : predicasData.filter(p => p.type === selectedType);
+
+  // Obtener categorías únicas del tipo seleccionado
+  const categories = Array.from(new Set(predicasByType.map(p => p.category)));
 
   // Filtrar prédicas
   const filteredPredicas = predicasData.filter(predica => {
     const matchesSearch = predica.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          predica.pastor.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = !selectedCategory || predica.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesType = selectedType === 'todos' || predica.type === selectedType;
+    return matchesSearch && matchesCategory && matchesType;
   });
 
   // Calcular paginación
@@ -305,6 +335,12 @@ export default function PredicasPage() {
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
+    setCurrentPage(1);
+  };
+
+  const handleTypeChange = (type: ContentType | 'todos') => {
+    setSelectedType(type);
+    setSelectedCategory('');
     setCurrentPage(1);
   };
 
@@ -367,6 +403,49 @@ export default function PredicasPage() {
         </div>
       </section>
 
+      {/* Tabs de Segmentos */}
+      <section className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <div className="inline-flex bg-gray-100 rounded-xl p-1.5 mt-8 mb-4">
+              <button
+                onClick={() => handleTypeChange('todos')}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                  selectedType === 'todos'
+                    ? 'bg-iglesia-azul-marino text-white shadow-lg'
+                    : 'text-iglesia-gris-medio hover:text-iglesia-azul-marino'
+                }`}
+              >
+                <BookOpen size={18} />
+                Todos
+              </button>
+              <button
+                onClick={() => handleTypeChange('predica')}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                  selectedType === 'predica'
+                    ? 'bg-iglesia-naranja text-white shadow-lg'
+                    : 'text-iglesia-gris-medio hover:text-iglesia-naranja'
+                }`}
+              >
+                <Mic size={18} />
+                Prédicas
+              </button>
+              <button
+                onClick={() => handleTypeChange('estudio')}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                  selectedType === 'estudio'
+                    ? 'bg-iglesia-verde-lima text-white shadow-lg'
+                    : 'text-iglesia-gris-medio hover:text-iglesia-verde-lima'
+                }`}
+              >
+                <GraduationCap size={18} />
+                Estudios Bíblicos
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filtros */}
       <section className="py-8 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -376,7 +455,7 @@ export default function PredicasPage() {
               <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-iglesia-gris-medio" />
               <input
                 type="text"
-                placeholder="Buscar prédicas..."
+                placeholder={selectedType === 'estudio' ? "Buscar estudios bíblicos..." : selectedType === 'predica' ? "Buscar prédicas..." : "Buscar..."}
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-iglesia-verde-lima focus:ring-2 focus:ring-iglesia-verde-lima/20 outline-none transition-all"
@@ -414,7 +493,9 @@ export default function PredicasPage() {
 
               {/* Info de resultados */}
               <div className="text-center mt-8 text-iglesia-gris-medio text-sm">
-                Mostrando {startIndex + 1} - {Math.min(startIndex + ITEMS_PER_PAGE, filteredPredicas.length)} de {filteredPredicas.length} prédicas
+                Mostrando {startIndex + 1} - {Math.min(startIndex + ITEMS_PER_PAGE, filteredPredicas.length)} de {filteredPredicas.length} {
+                  selectedType === 'estudio' ? 'estudios bíblicos' : selectedType === 'predica' ? 'prédicas' : 'recursos'
+                }
               </div>
 
               {/* Paginación */}

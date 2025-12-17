@@ -296,24 +296,37 @@ export default function Home() {
                 En la <span className="font-bold text-iglesia-azul-marino">Iglesia Apostólica y Misionera Central</span>, creemos en el poder de Dios para restaurar vidas. Fundamentados en la palabra y guiados por el Espíritu Santo, trabajamos incansablemente para extender el Reino de Dios.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex gap-4 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-iglesia-azul-marino group-hover:bg-iglesia-azul-marino group-hover:text-white transition-colors duration-300">
-                    <BookOpen size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-iglesia-gris-oscuro">Doctrina Sólida</h4>
-                    <p className="text-sm text-iglesia-gris-medio mt-1">Enseñanza bíblica fiel para el crecimiento espiritual.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-iglesia-verde-lima group-hover:bg-iglesia-verde-lima group-hover:text-white transition-colors duration-300">
-                    <Users size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-iglesia-gris-oscuro">Comunidad Viva</h4>
-                    <p className="text-sm text-iglesia-gris-medio mt-1">Un lugar donde encontrarás amistad y apoyo genuino.</p>
-                  </div>
+              {/* Visión */}
+              <div className="bg-indigo-50 rounded-xl p-6 border-l-4 border-iglesia-azul-marino">
+                <h4 className="font-bold text-iglesia-azul-marino text-lg mb-2 flex items-center gap-2">
+                  <Globe size={20} /> Nuestra Visión
+                </h4>
+                <p className="text-iglesia-gris-medio leading-relaxed">
+                  Ser una iglesia nacional e internacional que transforme su comunidad, teniendo discípulos genuinos que restablezcan el diseño de Dios en cada persona a través del evangelio del reino.
+                </p>
+              </div>
+
+              {/* Misión */}
+              <div className="bg-green-50 rounded-xl p-6 border-l-4 border-iglesia-verde-lima">
+                <h4 className="font-bold text-iglesia-verde-lima text-lg mb-2 flex items-center gap-2">
+                  <Heart size={20} /> Nuestra Misión
+                </h4>
+                <p className="text-iglesia-gris-medio leading-relaxed">
+                  Somos una iglesia que va y hace discípulos de Cristo a toda criatura en nuestra sociedad, bautizándolos en el nombre del Padre, del Hijo y del Espíritu Santo, para que cumplan con el propósito del diseño divino en sus vidas.
+                </p>
+              </div>
+
+              {/* Valores */}
+              <div className="bg-orange-50 rounded-xl p-6 border-l-4 border-iglesia-naranja">
+                <h4 className="font-bold text-iglesia-naranja text-lg mb-3 flex items-center gap-2">
+                  <BookOpen size={20} /> Nuestros Valores
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {['Amor', 'Integridad', 'Liderazgo', 'Compromiso', 'Servicio'].map((valor) => (
+                    <span key={valor} className="bg-white px-4 py-2 rounded-full text-iglesia-gris-oscuro font-medium text-sm shadow-sm border border-orange-100">
+                      {valor}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -350,7 +363,7 @@ export default function Home() {
               <div className="w-24 h-1.5 bg-iglesia-verde-lima rounded-full"></div>
 
               <p className="text-iglesia-gris-medio text-lg leading-relaxed">
-                Los pastores <span className="font-bold text-iglesia-azul-marino">Gregorio Cruz</span> y <span className="font-bold text-iglesia-azul-marino">Lucia Gálvez</span> son los fundadores de la Iglesia Apostólica y Misionera Central en Santo Domingo, República Dominicana.
+                Los pastores <span className="font-bold text-iglesia-azul-marino">Gregorio</span> y <span className="font-bold text-iglesia-azul-marino">Lucia Cruz</span> son los fundadores de la Iglesia Apostólica y Misionera Central en Santo Domingo, República Dominicana.
               </p>
 
               <p className="text-iglesia-gris-medio text-lg leading-relaxed">
@@ -392,7 +405,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-iglesia-azul-marino/60 via-transparent to-transparent z-10"></div>
                   <Image
                     src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                    alt="Pastores Gregorio Cruz y Lucia Gálvez"
+                    alt="Pastores Gregorio y Lucia Cruz"
                     fill
                     className="object-cover"
                   />
@@ -405,7 +418,7 @@ export default function Home() {
                           <Heart size={24} className="text-white" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-iglesia-azul-marino text-lg">Gregorio Cruz y Lucia Gálvez</h3>
+                          <h3 className="font-bold text-iglesia-azul-marino text-lg">Gregorio y Lucia Cruz</h3>
                           <p className="text-iglesia-naranja font-semibold text-sm uppercase tracking-wider">Pastores Generales</p>
                         </div>
                       </div>
@@ -427,9 +440,9 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-iglesia-gris-medio text-lg leading-relaxed italic">
-                  &ldquo;Nuestra visión es ver vidas transformadas por el poder del Espíritu Santo. Queremos ser una iglesia que ama a Dios con todo el corazón, que sirve a la comunidad con excelencia y que predica el evangelio sin compromiso.&rdquo;
+                  &ldquo;Nuestra visión es ser una iglesia nacional e internacional que transforme su comunidad, formando discípulos genuinos que restablezcan el diseño de Dios en cada persona. Queremos alcanzar, consolidar, formar y enviar a cada creyente para cumplir con el propósito divino en sus vidas.&rdquo;
                 </p>
-                <p className="text-iglesia-naranja font-semibold mt-4">— Pastores Gregorio Cruz y Lucia Gálvez</p>
+                <p className="text-iglesia-naranja font-semibold mt-4">— Pastores Gregorio y Lucia Cruz</p>
               </div>
             </div>
           </div>
@@ -616,7 +629,7 @@ export default function Home() {
               &copy; {new Date().getFullYear()} Iglesia Apostólica y Misionera Central. Todos los derechos reservados.
             </p>
             <p className="text-gray-600 text-[10px] uppercase tracking-widest">
-              Pastores Generales: Gregorio Cruz Y Lucia Gálvez
+              Pastores Generales: Gregorio y Lucia Cruz
             </p>
           </div>
         </div>
